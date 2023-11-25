@@ -1029,7 +1029,7 @@ local function InitUISetVariables()
   ui.set.setRow = XLGB_SetWindow_SetRow
   ui.set.setRow.edit = XLGB_SetWindow_SetRow_EditSet
   ui.set.setRow.editName = XLGB_SetWindow_SetRow_EditSetName
-  ui.set.setRow.set = XLGB_SetWindow_SetRow_Set
+  ui.set.setRow.set = XLGB_SetWindow_Selector
   ui.set.setRow.accept = XLGB_SetWindow_SetRow_AcceptSet
   ui.set.setRow.addRemoveSet = XLGB_SetWindow_SetRow_AddRemoveSet
 
