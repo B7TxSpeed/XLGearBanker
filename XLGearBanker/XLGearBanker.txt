@@ -1,7 +1,7 @@
 ## Title: XL Gear Banker
-## Author: @XL_Olsen (PC/EU)
-## APIVersion: 100031
-## Version: 1.0.2
+## Author: @XL_Olsen (PC/EU), |c00fffe@B7TxSpeed|r
+## APIVersion: 101042 101043
+## Version: 1.0.3
 ## SavedVariables: XLGearBankerSavedVariables
 ## DependsOn: LibCustomMenu LibDialog LibShifterBox LibAddonMenu-2.0>=28
 
