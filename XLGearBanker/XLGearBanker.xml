@@ -361,10 +361,7 @@
           <OnFocusGained>XLGB_UI:SelectEntireTextbox(self)</OnFocusGained>
         </EditBox>
 
-        <Control name="$(parent)_Set" inherits="ZO_ComboBox">
-          <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="10" offsetY="10" />
-          <Anchor point="TOPRIGHT" relativeTo="$(parent)_EditSet" relativePoint="TOPLEFT" offsetX="-10" offsetY="-5" />
-        </Control>
+        <!-- The Set Combox Box goes here but it had to be moved at the end of this controls XML block to address the bug where the dropdowns do not properly block access to the controls behind them. -->
 
       </Controls>
     </Control> 
@@ -439,6 +436,15 @@
     <Control name="$(parent)_ScrollList" inherits="ZO_ScrollList">
       <Anchor point="TOPLEFT" relativeTo="$(parent)_SetRow" relativePoint="BOTTOMLEFT" offsetX="0" offsetY="10" />
       <Anchor point="BOTTOMRIGHT" relativeTo="$(parent)_TotalSetItemsRow" relativePoint="TOPRIGHT" offsetX="-21" offsetY="-20" />
+    </Control>
+
+    <!-- Set Combo Box -->
+    <Control name="$(parent)_Selector" inherits="ZO_ScrollableComboBox">
+      <Anchor point="TOPLEFT" relativeTo="$(parent)_SetRow" relativePoint="TOPLEFT" offsetX="10" offsetY="10" />
+      <Anchor point="TOPRIGHT" relativeTo="$(parent)_SetRow_EditSet" relativePoint="TOPLEFT" offsetX="-10" offsetY="-5" />
+      <OnInitialized>
+        ZO_ScrollableComboBox:New(self)
+      </OnInitialized>
     </Control>
 
   </Controls>
