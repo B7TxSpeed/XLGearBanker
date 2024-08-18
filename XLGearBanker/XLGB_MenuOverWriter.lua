@@ -14,26 +14,35 @@ XLGB = XLGB_Constants
 
 -- Functions
 local function MakeContextMenuEntry_AddItemToGearSet(itemLink, itemID)
+  local sV = XLGearBanker.savedVariables
   local subEntries = {}
-  local totalGearSets = XLGB_GearSet:GetNumberOfGearSets()
-  if totalGearSets ~= 0 then
-    for i = 1, totalGearSets do
-      local gearSetName = XLGB_GearSet:GetGearSet(i).name
-      local subEntry = {
-        label = gearSetName,
-        callback =
-          function()
-            if (XLGB_GearSet:GetItemIndexInGearSet(itemID, i) == XLGB.ITEM_NOT_IN_SET) then
-              XLGB_GearSet:AddItemToGearSet(itemLink, itemID, i)
-            else
-              d("[XLGB] Item " .. itemLink .. " is already in " .. gearSetName)
-            end
+
+  -- Add selected set entry
+  if sV.displayingSet then
+    local gearSetName = XLGB_GearSet:GetGearSet(sV.displayingSet).name
+    local setEntry = {
+      label = "(Selected) " .. gearSetName,
+      callback =
+        function()
+          if (XLGB_GearSet:GetItemIndexInGearSet(itemID, sV.displayingSet) == XLGB.ITEM_NOT_IN_SET) then
+            XLGB_GearSet:AddItemToGearSet(itemLink, itemID, sV.displayingSet)
+          else
+            d("[XLGB] Item " .. itemLink .. " is already in " .. gearSetName)
           end
-      }
-      table.insert(subEntries, subEntry)
-    end
-    AddCustomSubMenuItem(XLGB.ADD_ITEM_TO_GEARSET, subEntries)
+        end
+    }
+    table.insert(subEntries, setEntry)
   end
+
+  -- Add open set window entry
+  local menuEntry = {
+    label = XLGB.OPEN_SET_WINDOW,
+    callback = function() XLGB_UI:ShowSetUI() end,
+    disabled = function() return not XLGB_UI:HiddenSetUI() end
+  }
+  table.insert(subEntries, menuEntry)
+
+  AddCustomSubMenuItem(XLGB.ADD_ITEM_TO_GEARSET, subEntries)
 end
 
 local function MakeContextMenuEntry_RemoveItemFromGearSet(itemLink, itemID)

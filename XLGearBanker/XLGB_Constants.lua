@@ -26,6 +26,7 @@ function XLGB_Constants:Initialize()
     --Strings
     self.ADD_ITEM_TO_GEARSET = "XLGB addItem"
     self.REMOVE_ITEM_FROM_GEARSET = "XLGB removeItem"
+    self.OPEN_SET_WINDOW = "[Open set window]"
 
     --UI Stuff
     self.ITEM_ROW = 69

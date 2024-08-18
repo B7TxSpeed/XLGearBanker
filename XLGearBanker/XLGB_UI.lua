@@ -980,6 +980,10 @@ function XLGB_UI:HideSetUI()
   end
 end
 
+function XLGB_UI:HiddenSetUI()
+  return ui.set:IsHidden()
+end
+
 function XLGB_UI:ToggleSetUI()
   if ui.set:IsHidden() then
     XLGB_UI:ShowSetUI()
